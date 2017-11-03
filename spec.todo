@@ -1,0 +1,101 @@
+# Delete from requirements.txt
+
+awscli==1.11.158
+botocore==1.7.16
+certifi==2016.2.28
+colorama==0.3.7
+docutils==0.14
+jmespath==0.9.3
+pyasn1==0.3.6
+python-dateutil==2.6.1
+PyYAML==3.12
+rsa==3.4.2
+s3transfer==0.1.11
+six==1.11.0
+xgboost==0.6
+
+Frontend:
+  Tasks regarding frontend written in React + Redux
+  Form:
+    Step by Step Form - user form + analysis form 
+    User Story Tasks:
+    ☐ Inicio
+      ☐ Select between Persona Natural/Empresa
+    ☐ Datos personales
+      ☐ Show autocomplete to search if company,person exists
+      ☐ When clicking on result populate fields
+      ☐ When looking show `New Entity` at the end of search to clean fields and create new one.
+      ☐ Save Empresa or Persona Natural. Use that id to continue analysis.
+    ☐ Balance General
+      ☐ Select Currency (USD - default)   
+    ☐ Ganancia y Perdida
+      ☐ When analysis is done then post to calculate viability
+    ☐ Resultados
+      ☐ Show results on result table
+      ☐ Show result range table
+    Technical Tasks:
+    ☐ Validate fields (Redux form)
+    ☐ Step by Step
+    ☐ Separate between Entity Form and Analysis Form
+    ☐ Mask Currency Fields
+    ☐ Select with more than 10 entries use an autocomplete
+    ☐ Handle HTTP errors accordingly
+
+  Templates:
+    Tasks regarding html and css templates
+    Tasks:
+    ☐ Create home page
+    ☐ Create navbar base template
+    ☐ Create login view
+    ☐ Create admin view (permissions, users)
+    ☐ Create templates and static directory
+
+  Data Grids:
+    Tasks related to data grids
+    Tasks:
+    ☐ Create user list (paginated)
+    ☐ Create analysis list (paginated)
+    ☐ Create user view
+    ☐ Inside user view, create user analysis data grid
+    ☐ Create analysis view
+
+Backend:
+  Tasks related to backend
+  Database:
+    ☐ User table
+    ☐ Permissions table
+    ☐ Entity(Persona Natural/Empresa) table
+  Authentication/Authorization - OAuth:
+    ☐ Use Google OAuth
+  Logging:
+    ☐ Handle logging for debugging and production
+  Serializers and Validation: 
+    ☐ User Serializer
+    ☐ Entity Serializer
+    ☐ Analysis Serializer
+  Endpoints:
+    ☐ Create Entity
+    ☐ Fetch Entity/Entities (Pagination)
+    ☐ Create Analysis
+    ☐ Fetch Analysis (Pagination)
+  Global Error Handling:
+    ☐ HTTP Exceptions (400, 500)
+
+Deployment:
+  Tasks related to devops
+  Development:
+  Tasks related to docker development config
+    Tasks:
+    ☐ nginx container
+    ☐ uwsgi + python container
+    ☐ postgres container
+    ☐ docker-compose configuration
+    ☐ package app
+  Production:
+  Tasks related to app deployment
+    Tasks:
+    ☐ AWS ECS, Task Definition
+    ☐ Elastic Load Balancer
+    ☐ SSL Certificates
+    ☐ DNS
+  

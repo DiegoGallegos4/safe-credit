@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block css%}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
+
+{% block content %}
+  <main role="main">
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Safe Credit</h1>
+        <p>Easy to analyze clients credit score</p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Test paragraph</p>
+        </div>
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Test paragraph</p>
+        </div>
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Test paragraph</p>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}
