@@ -30,7 +30,7 @@ def api_entity(id):
 
             entity.save()
 
-            return jsonify({'data': data}), 201
+            return jsonify({'data': entity_schema.dump(entity).data}), 201
     elif request.method == 'PUT':
         pass
     elif request.method == 'DELETE':
