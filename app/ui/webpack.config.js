@@ -51,7 +51,7 @@ module.exports = {
   devtool: IS_PRODUCTION ? false : 'cheap-eval-source-map',
   watch: !IS_PRODUCTION,
   entry: {
-    'cross_product/app': path.join(__dirname, '/src/cross_product.js')
+    'analysis/analysis_form': path.join(__dirname, '/src/analysis_form.js')
   },
   output: {
     path: path.join(__dirname, '../static/js/build'),
@@ -63,6 +63,10 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: ['babel-loader'],
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       }
     ]
   },
