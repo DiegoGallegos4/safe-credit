@@ -3,6 +3,8 @@ import bind from 'bind-decorator'
 import { render } from 'react-dom';
 import { bindActionCreators } from 'redux';
 import { Provider, connect } from 'react-redux';
+import Spinner from 'react-spinkit';
+import Notifications, {notify} from 'react-notify-toast';
 // Redux
 import * as actions from 'actions/analysis';
 import configureStore from './reducers/store';
@@ -55,52 +57,87 @@ class AnalysisForm extends Component{
   }
 
   @bind
-  handleSubmit(values){
-    console.log(values);
+  handleSubmitEntity(){
+    const { actions } = this.props;
+    const { entity : state } = this.props.analysis;
+    if (state.id) this.nextPage(); 
+    else actions.createOrReturnEntity(this.nextPage, notify.show);
+  }
+
+  @bind
+  handleSubmitAnalysis(){
+    const { actions } = this.props;
+    const { analysis : state} = this.props.analysis;
+    if (state.id) this.nextPage(); 
+    else actions.createAnalysis(this.nextPage, notify.show);
   }
 
   render(){
-    const { page } = this.state;
+    const { page, options } = this.state;
     const { actions, analysis : state } = this.props;
     return (
       <div>
-        { page === 1  && 
-          <Intro 
-            onChange={actions.updateForm}
-            nextPage={this.nextPage}
-          />
-        }
-        { page === 2 &&
-          <PersonalInfo
-            onChange={action.updateForm}
-            form={state.entity}
-            nextPage={this.nextPage}
-            previousPage={this.previousPage}
-          />
-        }
-        { page === 3 &&
-          <BalanceSheet
-            onChange={action.updateForm}
-            form={state.analysis}
-            nextPage={this.nextPage}
-            previousPage={this.previousPage}
-          />
-        }
-        { page === 4 &&
-          <ProfitNLoss
-            onChange={action.updateForm}
-            form={state.analysis}
-            nextPage={this.nextPage}
-            previousPage={this.previousPage}
-          />
-        }
-        { page === 5 && 
-          <Results
-            results={state.results}
-            previousPage={this.previousPage}
-            exit={this.exit}
-          />
-        }
+        <Notifications options={{zIndex: 5000}}/>
+        <ul className='nav nav-tabs'>
+          <li className="nav-item">
+            <a href="#" className={`nav-link ${page == 1 && 'active'}`}>Inicio</a>
+          </li>
+          <li className="nav-item">
+            <a href="#" className={`nav-link ${page == 2 && 'active'}`}>Datos Personales</a>
+          </li>
+          <li className="nav-item">
+            <a href="#" className={`nav-link ${page == 3 && 'active'}`}>Balance General</a>
+          </li>
+          <li className="nav-item">
+            <a href="#" className={`nav-link ${page == 4 && 'active'}`}>Ganancia y Perdidas</a>
+          </li>
+          <li className="nav-item">
+            <a href="#" className={`nav-link ${page == 5 && 'active'}`}>Resultados</a>
+          </li>
+        </ul>
+        <div className="container tab-content" style={{marginTop: 60, marginBottom: 30}}>
+          <div className="row">
+            { page === 1  && 
+              <Intro 
+                onChange={actions.updateForm}
+                nextPage={this.nextPage}
+              />
+            }
+            { page === 2 &&
+              <PersonalInfo
+                options={options}
+                onChange={actions.updateForm}
+                form={state.entity}
+                nextPage={this.handleSubmitEntity}
+                previousPage={this.previousPage}
+                error={state.error}
+              />
+            }
+            { page === 3 &&
+              <BalanceSheet
+                onChange={actions.updateForm}
+                form={state.analysis}
+                nextPage={this.nextPage}
+                previousPage={this.previousPage}
+              />
+            }
+            { page === 4 &&
+              <ProfitNLoss
+                onChange={actions.updateForm}
+                form={state.analysis}
+                nextPage={this.handleSubmitAnalysis}
+                previousPage={this.previousPage}
+              />
+            }
+            { page === 5 && 
+              <Results
+                results={state.results}
+                previousPage={this.previousPage}
+                exit={this.exit}
+              />
+            }
+          </div>
+        </div>
       </div>
     )
   }

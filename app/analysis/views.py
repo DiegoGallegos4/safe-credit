@@ -36,4 +36,26 @@ def api_analysis(id):
 
             analysis.save()
 
-            return jsonify({'data': analysis_schema(analysis).dump().data}), 201
+            # Liquity Indicators
+            current_ratio = analysis.current_asset / analysis.current_liability
+            net_work_capital = analysis.current_asset - analysis.current_liability
+            # Profitability Indicators
+            gross_margin = analysis.gross_utility / analysis.net_sales
+            net_margin = analysis.net_utility / analysis.net_sales
+            # Debt Indicators
+            debt_level = analysis.third_party_liability / analysis.total_assets
+            financial_debt = analysis.financial_obligations / analysis.net_sales
+
+            results = {
+                "current_ratio": current_ratio * 0.25,
+                "net_work_capital": net_work_capital,
+                "gross_margin": gross_margin * 0.25,
+                "net_margin": net_margin * 0.10,
+                "debt_level": debt_level * 0.30,
+                "financial_debt": financial_debt * 0.10
+            }
+
+            return jsonify({
+                'data': analysis_schema(analysis).dump().data,
+                'results': results
+            }), 201

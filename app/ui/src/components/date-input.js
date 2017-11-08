@@ -1,7 +1,7 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
+import PropTypes from 'prop-types';
 import 'react-datepicker/dist/datepicker.css';
-
 
 const DateInput  = ({
   label,
@@ -21,7 +21,7 @@ const DateInput  = ({
 DateInput.propTypes = {
   label: PropTypes.string,
   onChange: PropTypes.func,
-  value: PropTypes.string,
+  value: PropTypes.object,
   errorMessage: PropTypes.string
 }
 

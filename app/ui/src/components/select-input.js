@@ -1,5 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
+import PropTypes from 'prop-types';
 import 'react-select/dist/react-select.css';
 
 
@@ -27,4 +28,4 @@ SelectInput.propTypes = {
   errorMessage: PropTypes.string
 }
 
-export default SelectInputInput;
+export default SelectInput;

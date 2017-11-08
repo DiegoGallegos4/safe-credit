@@ -13,6 +13,7 @@ class Entity(db.Model):
     cellphone = db.Column(db.String(30))
     birth_date = db.Column(db.Date, nullable=False, default=db.func.current_timestamp())
     id_number = db.Column(db.String(80))
+    address = db.Column(db.String(100))
     analysis = db.relationship('Analysis', backref='entity', lazy=True)
 
     def save(self):

@@ -1,4 +1,7 @@
+from marshmallow_enum import EnumField
+
 from app import ma
+from .enums import MaritalStatus, Country
 from .models import Entity
 
 
@@ -11,8 +14,8 @@ class EntitySchema(ma.ModelSchema):
     name = ma.String(required=True)
     phone = ma.String()
     citizenship = ma.String()
-    marital_status = ma.String(required=True)
-    country = ma.String(required=True)
+    marital_status = EnumField(MaritalStatus)
+    country = EnumField(Country)
     cellphone = ma.String()
     birth_date = ma.Date(required=True)
     address = ma.String()

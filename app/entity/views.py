@@ -26,7 +26,7 @@ def api_entity(id):
             data = request.get_json()
             entity, errors = entity_schema.load(data)
             if errors:
-                return jsonify({'message': errors}), 400
+                return jsonify({'error': errors}), 400
 
             entity.save()
 
