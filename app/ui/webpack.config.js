@@ -51,7 +51,9 @@ module.exports = {
   devtool: IS_PRODUCTION ? false : 'cheap-eval-source-map',
   watch: !IS_PRODUCTION,
   entry: {
-    'analysis/analysis_form': path.join(__dirname, '/src/analysis_form.js')
+    'analysis/analysis_form': path.join(__dirname, '/src/analysis_form.js'),
+    'entity/entity_list': path.join(__dirname, '/src/entity_list.js'),
+    'entity/entity_view': path.join(__dirname, '/src/entity_view.js')    
   },
   output: {
     path: path.join(__dirname, '../static/js/build'),

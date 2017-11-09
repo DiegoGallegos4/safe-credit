@@ -3,10 +3,12 @@ import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
 
 import analysis from './analysis';
+import entity from './entity';
 
 
 const rootReducer = combineReducers({
-  analysis
+  analysis,
+  entity
 });
 
 const configureStore = () => {

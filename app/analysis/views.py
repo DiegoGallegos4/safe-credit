@@ -30,9 +30,11 @@ def api_analysis(id):
             return abort(400, 'Content type must be application/json')
         else:
             data = request.get_json()
+            data["status"] = 'pending'
+
             analysis, errors = analysis_schema.load(data)
             if errors:
-                return jsonify({'message': errors}), 400
+                return jsonify({'error': errors}), 400
 
             analysis.save()
 
@@ -47,15 +49,20 @@ def api_analysis(id):
             financial_debt = analysis.financial_obligations / analysis.net_sales
 
             results = {
-                "current_ratio": current_ratio * 0.25,
-                "net_work_capital": net_work_capital,
-                "gross_margin": gross_margin * 0.25,
-                "net_margin": net_margin * 0.10,
-                "debt_level": debt_level * 0.30,
-                "financial_debt": financial_debt * 0.10
+                "current_ratio": round(current_ratio * 0.25, 2),
+                "net_work_capital": round(net_work_capital, 2),
+                "gross_margin": round(gross_margin * 0.25, 2),
+                "net_margin": round(net_margin * 0.10, 2),
+                "debt_level": round(debt_level * 0.30, 2),
+                "financial_debt": round(financial_debt * 0.10, 2)
             }
 
+            results['total'] = round(results["current_ratio"] + results["gross_margin"] +
+                                     results["net_margin"] +
+                                     results["debt_level"] +
+                                     results["financial_debt"], 2)
+
             return jsonify({
-                'data': analysis_schema(analysis).dump().data,
+                'data': analysis_schema.dump(analysis).data,
                 'results': results
             }), 201

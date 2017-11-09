@@ -3,7 +3,7 @@ import os
 from app import create_app
 
 port_env = os.getenv('PORT')
-port = 8080
+port = 8090
 if port_env:
     port = int(port_env)
 

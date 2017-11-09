@@ -5,7 +5,7 @@ from .enums import AnalysisStatus
 class Analysis(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     current_asset = db.Column(db.Float)
-    passive_liability = db.Column(db.Float)
+    current_liability = db.Column(db.Float)
     total_assets = db.Column(db.Float)
     third_party_liability = db.Column(db.Float)
     financial_obligations = db.Column(db.Float)

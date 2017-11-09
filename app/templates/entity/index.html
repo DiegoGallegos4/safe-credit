@@ -1,9 +1,11 @@
 {% extends "base.html" %}
+
 {% block content %}
   <div class="container">
-    <h1>Client List</h1>
-    <div class='row'>
-      <h2>Test</h2>
-    </div>
+    <div id="root"></div>
   </div>
+{% endblock %}
+
+{% block js %}
+  <script src="{{ url_for('static', filename='js/build/entity/entity_list.js') }}"></script>
 {% endblock %}

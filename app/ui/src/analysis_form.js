@@ -53,7 +53,7 @@ class AnalysisForm extends Component{
 
   @bind
   exit(){
-
+    window.location.href = '/entity'
   }
 
   @bind

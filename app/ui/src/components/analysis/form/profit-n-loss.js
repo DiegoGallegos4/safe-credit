@@ -18,14 +18,14 @@ const ProfitNLoss = props =>
         />
         <TextInput
           type='number'
-          label='Margen Bruto'
+          label='Utilidad Bruto'
           value={props.form.gross_utility}
           errorMessage=''
           onChange={e => props.onChange('analysis', 'gross_utility', e.target.value)}
         />
         <TextInput
           type='number'
-          label='Margen neto'
+          label='Utilidad neto'
           value={props.form.net_utility}
           errorMessage=''
           onChange={e => props.onChange('analysis', 'net_utility', e.target.value)}

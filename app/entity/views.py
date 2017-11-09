@@ -31,10 +31,6 @@ def api_entity(id):
             entity.save()
 
             return jsonify({'data': entity_schema.dump(entity).data}), 201
-    elif request.method == 'PUT':
-        pass
-    elif request.method == 'DELETE':
-        pass
 
 
 @entity.route('/')
@@ -42,11 +38,7 @@ def index():
     return render_template('entity/index.html')
 
 
-@entity.route('/new')
-def new():
-    return "Hello"
-
-
-@entity.route('/edit')
-def edit():
-    return "Hello"
+@entity.route('/<int:id>')
+@entity.route('/view/<int:id>')
+def view(id):
+    return render_template('entity/view.html', id=id)

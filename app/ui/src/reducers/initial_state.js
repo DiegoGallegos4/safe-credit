@@ -31,11 +31,16 @@ export const initialState = {
       gross_margin: 0,
       net_margin: 0,
       debt_level: 0,
-      financial_debt: 0,
-      acceptance: "NO"
+      financial_debt: 0
     },
     validation: {},
     loading: false,
     error: ''
+  },
+  entity: {
+    entity: {},
+    entities: [],
+    error : '',
+    loading: false
   }
 }
