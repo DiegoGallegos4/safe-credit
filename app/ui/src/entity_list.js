@@ -32,7 +32,7 @@ class EntityList extends Component{
                     Clientes
                   </div>
                   <div className="col-md-6 d-flex justify-content-end">
-                    <a class="btn btn-success btn-sm" href="/analysis/new" role="button">
+                    <a className="btn btn-success btn-sm" href="/analysis/new" role="button">
                       Analizar
                     </a>
                   </div>
@@ -60,7 +60,8 @@ class EntityList extends Component{
                         <td>{`${entity.id_number}`}</td>
                         <td>{`${entity.analysis.length}`}</td>
                         <td className="text-center">
-                          <a className="badge badge-pill badge-dark" href={`/entity/${entity.id}`}>Ver</a>                  </td>
+                          <a className="badge badge-pill badge-dark" href={`/entity/${entity.id}`}>Ver</a>                  
+                        </td>
                       </tr>  
                     )
                   }

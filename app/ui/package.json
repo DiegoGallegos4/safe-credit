@@ -4,7 +4,8 @@
   "description": "user interface components",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "NODE_ENV=development webpack",
+    "build-prod": "NODE_ENV=production webpack"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -30,11 +31,15 @@
     "bind-decorator": "^1.0.11",
     "immutability-helper": "^2.4.0",
     "prop-types": "^15.6.0",
+    "rc-dialog": "^7.0.0",
     "react": "^16.0.0",
+    "react-bootstrap": "^0.31.5",
+    "react-bootstrap-dialog": "^0.9.2",
     "react-cookie": "^2.1.1",
     "react-datepicker": "^0.60.0",
     "react-dom": "^16.0.0",
     "react-maskedinput": "^4.0.0",
+    "react-modal-dialog": "^4.0.7",
     "react-notify-toast": "^0.4.0",
     "react-redux": "^5.0.6",
     "react-select": "^1.0.0-rc.10",

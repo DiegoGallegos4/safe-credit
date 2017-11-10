@@ -40,3 +40,27 @@ export const request = (url, options) => {
     })
   })
 }
+
+export const selectClass = (total) => {
+    if (total <= 1) return 'danger';
+    if (total <= 2) return 'warning';
+    return 'success';
+  }
+
+export const veredict = (total) => {
+  if (total <= 1) return 'Inviable';
+  if (total <= 2) return 'Viable con Riesgo';
+  return 'Viable';
+}
+
+export const calculateTotal = (analysis) => {
+  return Math.round( (analysis.current_ratio + analysis.gross_margin + 
+    analysis.net_margin + analysis.debt_level + analysis.financial_debt) * 100) / 100;
+}
+
+export const calculateDebtCapacity = (analysis) => {
+  return Math.round(
+    (analysis.total_assets - analysis.current_liability) * 
+    (analysis.current_ratio + analysis.net_margin + analysis.debt_level) * 100) / 100;
+}
+

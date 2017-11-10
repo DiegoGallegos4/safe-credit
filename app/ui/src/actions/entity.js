@@ -16,7 +16,7 @@ const updateEntity = entity => ({
 
 export const getEntities = () => {
   return (dispatch, getState) => {
-    dispatch(requestInProgress())
+    // dispatch(requestInProgress())
     return request(ENTITY_URL, {
         method: 'GET',
         headers: {
@@ -47,7 +47,7 @@ export const getEntities = () => {
 
 export const getEntity = id => {
   return dispatch => {
-    dispatch(requestInProgress())
+    // dispatch(requestInProgress())
     return request(`${ENTITY_URL}/${id}`,{
         method: 'GET',
         headers: {

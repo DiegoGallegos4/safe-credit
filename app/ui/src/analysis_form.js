@@ -53,7 +53,7 @@ class AnalysisForm extends Component{
 
   @bind
   exit(){
-    window.location.href = '/entity'
+    window.location.href = '/entity/';
   }
 
   @bind
@@ -132,6 +132,7 @@ class AnalysisForm extends Component{
             { page === 5 && 
               <Results
                 results={state.results}
+                analysis={state.analysis}
                 previousPage={this.previousPage}
                 exit={this.exit}
               />

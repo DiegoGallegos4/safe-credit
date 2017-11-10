@@ -1,10 +1,10 @@
 import React from 'react';
-
+import { selectClass, veredict } from '../../../actions/helpers.js';
 
 const Results = props => (
   <div className="container">
     <div className="row">
-      <table className="table">
+      <table className="table table-condensed">
         <thead className='thead-light'>
           <tr colSpan='4' className='text-center'>
             <th colSpan="4">TABLA DE RESULTADOS</th>
@@ -30,7 +30,7 @@ const Results = props => (
           <tr>
             <td>2</td>
             <td>Capital neto de trabajo</td>
-            <td className='text-center'><b>{props.results.net_work_capital}</b></td>
+            <td className='text-center'><b>$ {props.results.net_work_capital}</b></td>
             <td></td>
           </tr>
           <tr>
@@ -69,11 +69,40 @@ const Results = props => (
         <tfoot>
           <tr>
             <td></td>
-            <td><b>Aceptacion: Si/No</b></td>
+            <td><b>Aceptacion</b></td>
             <td className="text-center"><b>{props.results.total}</b></td>
             <td></td>
           </tr>
         </tfoot>
+      </table>
+    </div>
+    <div className="row" style={{marginTop: 50}}>
+      <table className="table">
+         <thead className='thead-light'>
+          <tr colSpan='2' className='text-center'>
+            <th colSpan="2">RECOMENDACIONES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Capacidad de Endeudamiento</td>
+            <td>
+              {
+                Math.round((props.analysis.total_assets - props.analysis.current_liability) * 
+                (props.results.current_ratio + props.results.net_margin + props.results.debt_level) * 100 ) / 100
+              }
+            </td>
+          </tr>
+          <tr>
+            <td>Viabilidad</td>
+            <td>
+              <span className={`badge badge-${selectClass(props.results.total)}`}>
+                $ {props.results.total}
+              </span>
+              <span> {veredict(props.results.total)}</span>
+            </td>
+          </tr>
+        </tbody>
       </table>
     </div>
     {/*Button Row*/}
